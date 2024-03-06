@@ -17,4 +17,9 @@ public class Category {
     private String descript;
     private String ownerId;
 
+    public Category(CategoryDTO categoryDTO) {
+        this.title = categoryDTO.title();
+        this.descript = categoryDTO.description();
+        this.ownerId = categoryDTO.ownerId();
+    }
 }
