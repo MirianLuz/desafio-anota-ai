@@ -29,8 +29,10 @@ public class ProductService {
 
     public Product update(String id, ProductDTO productData) {
         Product product = this.productRepository.findById(id).orElseThrow(ProductNotFoundException::new);
+        this.categoryService.getById(productData.categoryId()).ifPresent(product::setCategory);
         if(!productData.title().isEmpty()) product.setTitle(productData.title());
         if(!productData.description().isEmpty()) product.setDescription(productData.description());
+        if(!(productData.price() == null)) product.setPrice(productData.price());
         this.productRepository.save(product);
         return product;
     }
