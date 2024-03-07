@@ -32,7 +32,7 @@ public class AwsSnsConfig {
                 .build();
     }
 
-    @Bean
+    @Bean(name="catalogEventsTopic")
     public Topic snsCatalogTopicBuilder(){
         return new Topic().withTopicArn(catalogTopicArn);
     }
