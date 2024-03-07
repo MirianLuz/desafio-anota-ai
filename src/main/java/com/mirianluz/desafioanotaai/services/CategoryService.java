@@ -4,9 +4,12 @@ import com.mirianluz.desafioanotaai.domain.category.Category;
 import com.mirianluz.desafioanotaai.domain.category.CategoryDTO;
 import com.mirianluz.desafioanotaai.domain.category.exceptions.CategoryNotFoundException;
 import com.mirianluz.desafioanotaai.repositories.CategoryRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
+@Service
 public class CategoryService {
     private CategoryRepository categoryRepository;
 
@@ -30,6 +33,9 @@ public class CategoryService {
 
     public List<Category> getAll() {
         return this.categoryRepository.findAll();
+    }
+    public Optional<Category> getById(String id) {
+        return this.categoryRepository.findById(id);
     }
 
     public void delete(String id) {
